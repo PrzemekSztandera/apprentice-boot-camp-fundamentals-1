@@ -3,12 +3,12 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DeckTest {
+public class PlayingPlayingCardDeckTest {
 
     @Test
     public void getDeckInOrder_return52CardsCorrectlyFormatted() {
-        Deck deck = new Deck();
-        assertThat(deck.getCards()).containsExactly(
+        PlayingCardDeck playingCardDeck = new PlayingCardDeck();
+        assertThat(playingCardDeck.getPlayingCards()).containsExactly(
                 "ace of clubs",
                 "2 of clubs",
                 "3 of clubs",

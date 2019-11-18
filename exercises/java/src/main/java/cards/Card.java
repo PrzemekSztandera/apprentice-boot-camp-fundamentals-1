@@ -1,20 +1,6 @@
 package cards;
 
-class Card {
-    private Suit suit;
-    private int value;
+public interface Card {
 
-    Card(Suit suit, int value) {
-        this.suit = suit;
-        this.value = value;
-    }
-
-    Suit getSuit() {
-        return suit;
-    }
-
-    int getValue() {
-        return value;
-    }
-
+   boolean snap(Card object);
 }

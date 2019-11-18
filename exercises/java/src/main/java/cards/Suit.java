@@ -1,6 +1,8 @@
 package cards;
 
-public class Suit {
+import java.util.Objects;
+
+public class Suit implements Comparable<Suit>{
 
     private String name;
 
@@ -14,5 +16,10 @@ public class Suit {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int compareTo(Suit o) {
+        return this.getName().compareTo(o.getName());
     }
 }
