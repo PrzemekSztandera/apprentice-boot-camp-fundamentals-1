@@ -20,13 +20,13 @@ class PlayingCard implements Card {
     @Override
     public boolean snap(Card card) {
         if(card instanceof PlayingCard) {
-            return this.suit.getName().equals(((PlayingCard)card).getSuit().getName());
+            return this.suit.equals(((PlayingCard)card).getSuit());
         }
         return false;
     }
 
     @Override
     public String toString() {
-        return this.getSuit().getName() + " " + this.getValue();
+        return this.getSuit() + " " + this.getValue();
     }
 }

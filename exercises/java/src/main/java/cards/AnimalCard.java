@@ -8,8 +8,6 @@ public class AnimalCard implements Card {
         this.animal = animal;
     }
 
-
-
     @Override
     public String toString() {
         return animal.toString();
@@ -18,7 +16,7 @@ public class AnimalCard implements Card {
     @Override
     public boolean snap(Card object) {
         if(object instanceof AnimalCard) {
-            return object != null && this.animal.equals(((AnimalCard)object).animal);
+            return this.animal.equals(((AnimalCard)object).animal);
         }
         return false;
     }

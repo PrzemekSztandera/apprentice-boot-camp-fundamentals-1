@@ -6,9 +6,10 @@ import java.util.List;
 
 public class PlayingCardDeck implements Deck {
 
-    private List<PlayingCard> playingCards = new ArrayList<>();
+    private List<PlayingCard> playingCards;
 
     public PlayingCardDeck() {
+        playingCards = new ArrayList<>();
         generateDeck();
     }
 
@@ -44,7 +45,7 @@ public class PlayingCardDeck implements Deck {
                 default: throw new IllegalArgumentException("Something went wrong " + playingCard.getValue() + "is not a valid faceValue!");
             }
 
-            String suitName = playingCard.getSuit().getName();
+            String suitName = playingCard.getSuit().toString();
             result[cardNumber] = faceValueName + " of " + suitName;
             cardNumber++;
         }
@@ -65,12 +66,12 @@ public class PlayingCardDeck implements Deck {
     private void generateDeck() {
         for (int suit = 0; suit < 4; suit++) {
             for (int faceValue = 0; faceValue < 13; faceValue++) {
-                Suit suitObj = new Suit();
+                Suit suitObj = null;
                 switch (suit){
-                    case 0: suitObj.setName("clubs"); break;
-                    case 1: suitObj.setName("diamonds"); break;
-                    case 2: suitObj.setName("hearts"); break;
-                    case 3: suitObj.setName("spades"); break;
+                    case 0: suitObj = Suit.clubs; break;
+                    case 1: suitObj = Suit.diamonds; break;
+                    case 2: suitObj = Suit.hearts; break;
+                    case 3: suitObj = Suit.spades; break;
                     default:
                 }
                 playingCards.add(new PlayingCard(suitObj, faceValue));
