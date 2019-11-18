@@ -7,7 +7,7 @@ class Snap {
     private int player2Score;
     private Deck deck;
 
-    Snap(Deck deck) {
+    private Snap(Deck deck) {
         this.deck = deck;
         deck.shuffle();
     }
@@ -18,7 +18,7 @@ class Snap {
         snap.play();
     }
 
-    void play() {
+    private void play() {
         Scanner scanner = new Scanner(System.in);
 
         Card previousCard = null;

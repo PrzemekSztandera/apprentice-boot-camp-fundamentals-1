@@ -77,5 +77,4 @@ public class PlayingCardDeck implements Deck {
             }
         }
     }
-
 }
