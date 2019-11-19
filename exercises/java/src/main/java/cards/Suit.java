@@ -5,4 +5,5 @@ enum Suit {
     diamonds,
     hearts,
     spades
+
 }

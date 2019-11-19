@@ -1,6 +1,7 @@
 package cards;
 
-public interface Card {
+public abstract class Card {
 
-   boolean snap(Card object);
+   abstract boolean snap(Card card);
+
 }

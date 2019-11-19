@@ -8,7 +8,7 @@ public class PlayingPlayingCardDeckTest {
     @Test
     public void getDeckInOrder_return52CardsCorrectlyFormatted() {
         PlayingCardDeck playingCardDeck = new PlayingCardDeck();
-        assertThat(playingCardDeck.getPlayingCards()).containsExactly(
+        assertThat(playingCardDeck.getCards()).containsExactly(
                 "ace of clubs",
                 "2 of clubs",
                 "3 of clubs",

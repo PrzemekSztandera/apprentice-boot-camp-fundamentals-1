@@ -1,6 +1,6 @@
 package cards;
 
-class PlayingCard implements Card {
+class PlayingCard extends Card {
     private Suit suit;
     private int value;
 
@@ -20,7 +20,7 @@ class PlayingCard implements Card {
     @Override
     public boolean snap(Card card) {
         if(card instanceof PlayingCard) {
-            return this.suit.equals(((PlayingCard)card).getSuit());
+            return this.value == (((PlayingCard)card).value);
         }
         return false;
     }
@@ -29,4 +29,5 @@ class PlayingCard implements Card {
     public String toString() {
         return this.getSuit() + " " + this.getValue();
     }
+
 }

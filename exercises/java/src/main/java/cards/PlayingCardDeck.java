@@ -1,34 +1,28 @@
 package cards;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
-public class PlayingCardDeck implements Deck {
-
-    private List<PlayingCard> playingCards;
+public class PlayingCardDeck extends Deck {
 
     public PlayingCardDeck() {
-        playingCards = new ArrayList<>();
         generateDeck();
     }
 
-
     public static void main(String[] args) {
         PlayingCardDeck playingCardDeck = new PlayingCardDeck();
-        String[] deckInOrder = playingCardDeck.getPlayingCards();
+        String[] deckInOrder = playingCardDeck.getCards();
         for(String card: deckInOrder){
             System.out.println(card);
         }
     }
 
-    public String[] getPlayingCards() {
+    public String[] getCards() {
         String[] result = new String[52];
 
         int cardNumber = 0;
-        for (PlayingCard playingCard : playingCards) {
+        for (Card playingCard : cards) {
             String faceValueName;
-            switch (playingCard.getValue()){
+            switch (((PlayingCard)playingCard).getValue()){
                 case 0: faceValueName = "ace"; break;
                 case 1:
                 case 2:
@@ -38,29 +32,28 @@ public class PlayingCardDeck implements Deck {
                 case 6:
                 case 7:
                 case 8:
-                case 9: faceValueName = Integer.toString(playingCard.getValue()+1); break;
+                case 9: faceValueName = Integer.toString(((PlayingCard)playingCard).getValue()+1); break;
                 case 10: faceValueName = "jack"; break;
                 case 11: faceValueName = "queen"; break;
                 case 12: faceValueName = "king"; break;
-                default: throw new IllegalArgumentException("Something went wrong " + playingCard.getValue() + "is not a valid faceValue!");
+                default: throw new IllegalArgumentException("Something went wrong " + ((PlayingCard)playingCard).getValue() + "is not a valid faceValue!");
             }
 
-            String suitName = playingCard.getSuit().toString();
+            String suitName = ((PlayingCard)playingCard).getSuit().toString();
             result[cardNumber] = faceValueName + " of " + suitName;
             cardNumber++;
         }
-
         return result;
     }
 
     @Override
     public PlayingCard deal() {
-        return playingCards.remove(0);
+        return (PlayingCard)cards.remove(0);
     }
 
     @Override
     public void shuffle() {
-        Collections.shuffle(playingCards);
+        Collections.shuffle(cards);
     }
 
     private void generateDeck() {
@@ -74,7 +67,7 @@ public class PlayingCardDeck implements Deck {
                     case 3: suitObj = Suit.spades; break;
                     default:
                 }
-                playingCards.add(new PlayingCard(suitObj, faceValue));
+                cards.add(new PlayingCard(suitObj, faceValue));
             }
         }
     }

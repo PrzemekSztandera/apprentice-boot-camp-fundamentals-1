@@ -1,35 +1,35 @@
 package cards;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
-class AnimalDeck implements Deck{
+class AnimalDeck extends Deck {
 
-    private List<AnimalCard> cards;
 
-    AnimalDeck() {
-        cards = new ArrayList<>();
-        for (Animal animal : Animal.values()) {
-            cards.add(new AnimalCard(animal));
-            cards.add(new AnimalCard(animal));
-        }
+    public AnimalDeck() {
+        generateDeck();
     }
 
     public void shuffle() {
         Collections.shuffle(cards);
     }
 
-    public String[] getPlayingCards() {
+    public String[] getCards() {
         String[] result = new String[cards.size()];
         for (int i = 0; i < cards.size(); i++) {
-            AnimalCard card = cards.get(i);
+            Card card = cards.get(i);
             result[i] = card.toString();
         }
         return result;
     }
 
-    public AnimalCard deal() {
+    public Card deal() {
         return cards.remove(0);
+    }
+
+    private void generateDeck() {
+        for (Animal animal : Animal.values()) {
+            cards.add(new AnimalCard(animal));
+            cards.add(new AnimalCard(animal));
+        }
     }
 }
